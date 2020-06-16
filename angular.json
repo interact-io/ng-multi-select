@@ -1,0 +1,147 @@
+{
+  "version": 1,
+  "projects": {
+    "multi-select-demo-app": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/multi-select-demo-app",
+      "sourceRoot": "apps/multi-select-demo-app/src",
+      "prefix": "ng-multi-select",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/multi-select-demo-app",
+            "index": "apps/multi-select-demo-app/src/index.html",
+            "main": "apps/multi-select-demo-app/src/main.ts",
+            "polyfills": "apps/multi-select-demo-app/src/polyfills.ts",
+            "tsConfig": "apps/multi-select-demo-app/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/multi-select-demo-app/src/favicon.ico",
+              "apps/multi-select-demo-app/src/assets"
+            ],
+            "styles": ["apps/multi-select-demo-app/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/multi-select-demo-app/src/environments/environment.ts",
+                  "with": "apps/multi-select-demo-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "multi-select-demo-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "multi-select-demo-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "multi-select-demo-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/multi-select-demo-app/tsconfig.app.json",
+              "apps/multi-select-demo-app/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/multi-select-demo-app/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/multi-select-demo-app/jest.config.js",
+            "tsConfig": "apps/multi-select-demo-app/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/multi-select-demo-app/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "multi-select-demo-app-e2e": {
+      "root": "apps/multi-select-demo-app-e2e",
+      "sourceRoot": "apps/multi-select-demo-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/multi-select-demo-app-e2e/cypress.json",
+            "tsConfig": "apps/multi-select-demo-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "multi-select-demo-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "multi-select-demo-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/multi-select-demo-app-e2e/tsconfig.e2e.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/multi-select-demo-app-e2e/**/*"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "multi-select-demo-app"
+}
