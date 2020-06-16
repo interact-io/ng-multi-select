@@ -6,7 +6,7 @@ const { constants } = require('karma');
 
 module.exports = () => {
   return {
-    basePath: '/',
+    basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
       require('karma-jasmine'),
@@ -36,5 +36,8 @@ module.exports = () => {
       }
     },
     singleRun: true,
+    mime: {
+      'text/x-typescript': ['ts','tsx']
+    },
   };
 };
