@@ -9,7 +9,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "test:multi-select:github": "ng test ng-multi-select",
+    "test:multi-select:github": "ng test",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
     "affected:apps": "nx affected:apps",
