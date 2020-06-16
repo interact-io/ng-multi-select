@@ -5,7 +5,7 @@
       "projectType": "library",
       "root": "libs/ng-multi-select-lib",
       "sourceRoot": "libs/ng-multi-select-lib/src",
-      "prefix": "ng-multi-select",
+      "prefix": "interact",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -41,7 +41,7 @@
       },
       "root": "apps/multi-select-demo-app",
       "sourceRoot": "apps/multi-select-demo-app/src",
-      "prefix": "ng-multi-select",
+      "prefix": "interact",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
