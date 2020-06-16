@@ -1,0 +1,33 @@
+{
+  "npmScope": "ng-multi-select",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "ng-multi-select-lib": {
+      "tags": []
+    },
+    "multi-select-demo-app": {
+      "tags": []
+    },
+    "multi-select-demo-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["multi-select-demo-app"]
+    }
+  }
+}
