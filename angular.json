@@ -129,6 +129,38 @@
           }
         }
       }
+    },
+    "ng-multi-select-lib": {
+      "projectType": "library",
+      "root": "libs/ng-multi-select-lib",
+      "sourceRoot": "libs/ng-multi-select-lib/src",
+      "prefix": "ng-multi-select",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-multi-select-lib/tsconfig.lib.json",
+              "libs/ng-multi-select-lib/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ng-multi-select-lib/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-multi-select-lib/jest.config.js",
+            "tsConfig": "libs/ng-multi-select-lib/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/ng-multi-select-lib/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

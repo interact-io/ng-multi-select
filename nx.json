@@ -25,6 +25,9 @@
     "multi-select-demo-app-e2e": {
       "tags": [],
       "implicitDependencies": ["multi-select-demo-app"]
+    },
+    "ng-multi-select-lib": {
+      "tags": []
     }
   }
 }
