@@ -1,6 +1,38 @@
 {
   "version": 1,
-  "projects": {},
+  "projects": {
+    "ng-multi-select-lib": {
+      "projectType": "library",
+      "root": "libs/ng-multi-select-lib",
+      "sourceRoot": "libs/ng-multi-select-lib/src",
+      "prefix": "ng-multi-select",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-multi-select-lib/tsconfig.lib.json",
+              "libs/ng-multi-select-lib/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ng-multi-select-lib/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/ng-multi-select-lib/src/test.ts",
+            "tsConfig": "libs/ng-multi-select-lib/tsconfig.spec.json",
+            "karmaConfig": "libs/ng-multi-select-lib/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/angular"
   },
@@ -12,5 +44,6 @@
     "@nrwl/angular:library": {
       "unitTestRunner": "karma"
     }
-  }
+  },
+  "defaultProject": "ng-multi-select-lib"
 }
