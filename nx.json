@@ -21,6 +21,13 @@
   "projects": {
     "ng-multi-select-lib": {
       "tags": []
+    },
+    "multi-select-demo-app": {
+      "tags": []
+    },
+    "multi-select-demo-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["multi-select-demo-app"]
     }
   }
 }
