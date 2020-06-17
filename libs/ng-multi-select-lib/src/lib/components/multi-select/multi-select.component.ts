@@ -64,8 +64,10 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
     this.localFormGroup.controls['values'].patchValue(_.xor(this.localFormGroup.controls['values'].value, [field]));
   }
 
-  toggleMultiSelect() {
-    this.multiSelectListContainer.nativeElement.focus();
+  focusMultiSelect() {
+    if (this.showResults) {
+      this.multiSelectListContainer.nativeElement.focus();
+    }
   }
 
 }
