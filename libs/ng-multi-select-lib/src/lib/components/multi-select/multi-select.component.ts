@@ -13,7 +13,7 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
   @Input() multiSelectLabel?: string;
   localFormGroup: FormGroup;
   multiSelectChangeSubscription: Subscription;
-  showResults: boolean;
+  showMultiSelect: boolean;
   @ViewChild('multiSelectContainer') multiSelectContainer: ElementRef;
   onChange: (value: any[]) => {};
   onTouched: () => {};
@@ -70,9 +70,13 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
   }
 
   focusMultiSelect() {
-    if (this.showResults) {
+    if (this.showMultiSelect) {
       this.multiSelectContainer.nativeElement.focus();
     }
+  }
+
+  setShowMultiSelect(value: boolean) {
+    this.showMultiSelect = value;
   }
 
 }
