@@ -13,7 +13,7 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
   localFormGroup: FormGroup;
   multiSelectChangeSubscription: Subscription;
   showResults: boolean;
-  @ViewChild('multiSelectListContainer') multiSelectListContainer: ElementRef;
+  @ViewChild('multiSelectContainer') multiSelectContainer: ElementRef;
   onChange: (value: any[]) => {};
   onTouched: () => {};
 
@@ -21,6 +21,10 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
     if (ngControl) {
       ngControl.valueAccessor = this;
     }
+  }
+
+  get values() {
+    return this.localFormGroup.controls['values'].value;
   }
 
   ngOnInit(): void {
@@ -61,12 +65,12 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
   }
 
   selectOption(field: any) {
-    this.localFormGroup.controls['values'].patchValue(_.xor(this.localFormGroup.controls['values'].value, [field]));
+    this.localFormGroup.controls['values'].patchValue(_.xor(this.values, [field]));
   }
 
   focusMultiSelect() {
     if (this.showResults) {
-      this.multiSelectListContainer.nativeElement.focus();
+      this.multiSelectContainer.nativeElement.focus();
     }
   }
 
