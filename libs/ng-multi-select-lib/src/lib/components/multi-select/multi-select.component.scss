@@ -5,10 +5,6 @@ $default-select-height: 3.125rem;
   display: flex;
   flex-direction: column;
 
-  &.invalid {
-    box-shadow: 0 0 0 0.125rem red;
-  }
-
   .multi-select-label {
     cursor: text;
   }
@@ -86,6 +82,11 @@ $default-select-height: 3.125rem;
       .multi-select-list {
         user-select: none;
       }
+    }
+
+    &.invalid {
+      box-shadow: 0 0 0 0.125rem red;
+      border-color: transparent;
     }
 
     .multi-select-list {
