@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, Optiona
 import { ControlValueAccessor, FormBuilder, FormGroup, NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import _ from 'lodash';
+import { ToOptionPipe } from '../../pipes/to-option.pipe';
 
 @Component({
   selector: 'interact-multi-select',
@@ -9,9 +10,10 @@ import _ from 'lodash';
   styleUrls: ['./multi-select.component.scss']
 })
 export class MultiSelectComponent implements OnInit, ControlValueAccessor, AfterViewInit, OnDestroy {
-  @Input() fields: any[];
+  @Input() options: any[];
   @Input() multiSelectLabel?: string;
   @Input() disabled?: boolean;
+  @Input() objectFieldToShow?: string;
   localFormGroup: FormGroup;
   multiSelectChangeSubscription: Subscription;
   showMultiSelect: boolean;
@@ -19,7 +21,7 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
   onChange: (value: any[]) => {};
   onTouched: () => {};
 
-  constructor(@Optional() public ngControl: NgControl, private formBuilder: FormBuilder) {
+  constructor(@Optional() public ngControl: NgControl, private formBuilder: FormBuilder, private toOptionPipe: ToOptionPipe) {
     if (ngControl) {
       ngControl.valueAccessor = this;
     }
@@ -89,6 +91,10 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
     if (!this.disabled) {
       this.showMultiSelect = value;
     }
+  }
+
+  resolveObject(): string[] {
+    return this.values.map(value => this.toOptionPipe.transform(value, this.objectFieldToShow));
   }
 
 }

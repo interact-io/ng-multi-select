@@ -4,15 +4,15 @@
   <div #multiSelectContainer class="multi-select-container"
        [ngClass]="{'multi-select-hidden': !showMultiSelect || disabled}"
        (blur)="setShowMultiSelect(false)" tabindex="1">
-    <div class="multi-select-option" *ngFor="let field of fields" (click)="selectOption(field)">
-      <input type="checkbox" [checked]="values.includes(field)">
-      <span class="multi-select-option-text"
-            [ngClass]="{'option-checked': values.includes(field)}">{{field}}</span>
+    <div class="multi-select-option" *ngFor="let option of options" (click)="selectOption(option)">
+      <input type="checkbox" [checked]="values.includes(option)">
+      <span class="multi-select-option-text" [ngClass]="{'option-checked': values.includes(option)}">
+        {{objectFieldToShow ? (option | toOption : objectFieldToShow) : option}}</span>
     </div>
   </div>
   <div id="multi-select-toggle" class="multi-select-toggle" (focus)="setShowMultiSelect(true)"
        (blur)="focusMultiSelect()" tabindex="1"
        [ngClass]="{'multi-select-disabled': disabled, invalid: localFormGroup.get('values').invalid}">
-    <span class="multi-select-list">{{values}}</span>
+    <span class="multi-select-list">{{objectFieldToShow ? resolveObject() : values}}</span>
   </div>
 </div>
