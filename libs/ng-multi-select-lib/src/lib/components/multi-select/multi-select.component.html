@@ -1,0 +1,15 @@
+<div class="multi-select-wrapper">
+  <label for="multi-select" class="multi-select-label">Choose values</label>
+  <div>
+    <div #multiSelectListContainer class="multi-select-list-container" [ngClass]="{hidden: !showResults}"
+         (blur)="this.showResults = false" tabindex="1">
+      <div class="multi-select-option" *ngFor="let field of fields" (click)="selectOption(field)">
+        <input type="checkbox" [checked]="localFormGroup.controls['values'].value.includes(field)">
+        <span class="multi-select-option-text"
+              [ngClass]="{'option-checked': localFormGroup.controls['values'].value.includes(field)}">{{field}}</span>
+      </div>
+    </div>
+    <div id="multi-select" class="multi-select-container" (focus)="this.showResults = true"
+         (click)="toggleMultiSelect()" tabindex="1"></div>
+  </div>
+</div>
