@@ -1,3 +1,5 @@
+$default-select-height: 3.125rem;
+
 .multi-select-wrapper {
   width: 100%;
   display: flex;
@@ -8,14 +10,14 @@
   }
 
   .multi-select-container {
-    z-index: 1000;
-    max-height: 300px;
+    z-index: 11;
+    max-height: 17.5rem;
     overflow-y: scroll;
     padding: 0;
     position: absolute;
 
     .multi-select-option {
-      height: 50px;
+      height: $default-select-height;
       cursor: pointer;
       display: flex;
       flex-direction: row;
@@ -53,13 +55,13 @@
 
   .multi-select-toggle {
     width: 100%;
-    height: 50px;
+    height: $default-select-height;
     border-radius: 4px;
-    margin-top: 8px;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
     border: 1px solid black;
     cursor: pointer;
     box-sizing: border-box;
-    padding: 8px;
     display: flex;
 
     &:hover {
