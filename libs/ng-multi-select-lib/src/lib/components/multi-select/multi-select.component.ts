@@ -11,6 +11,7 @@ import _ from 'lodash';
 export class MultiSelectComponent implements OnInit, ControlValueAccessor, AfterViewInit, OnDestroy {
   @Input() fields: any[];
   @Input() multiSelectLabel?: string;
+  @Input() disabled?: boolean;
   localFormGroup: FormGroup;
   multiSelectChangeSubscription: Subscription;
   showMultiSelect: boolean;
@@ -45,6 +46,15 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
     this.onTouched();
   }
 
+  setDisabledState(isDisabled: boolean) {
+    if (isDisabled && this.localFormGroup && !this.localFormGroup.disabled) {
+      this.localFormGroup.disable();
+    } else if (!isDisabled && !this.localFormGroup.enabled) {
+      this.localFormGroup.enable();
+      this.localFormGroup.get('values').enable();
+    }
+  }
+
   writeValue(value: any[]): void {
     if (value && this.localFormGroup) {
       this.localFormGroup.get('values').setValue(value);
@@ -76,7 +86,9 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
   }
 
   setShowMultiSelect(value: boolean) {
-    this.showMultiSelect = value;
+    if (!this.disabled) {
+      this.showMultiSelect = value;
+    }
   }
 
 }

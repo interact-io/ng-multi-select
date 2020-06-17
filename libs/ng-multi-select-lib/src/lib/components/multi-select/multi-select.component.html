@@ -1,7 +1,7 @@
-<div class="multi-select-wrapper">
+<div class="multi-select-wrapper" [ngClass]="{invalid: localFormGroup.get('values').invalid}">
   <label for="multi-select-toggle"
          class="multi-select-label">{{multiSelectLabel ? multiSelectLabel : 'Choose values'}}</label>
-  <div #multiSelectContainer class="multi-select-container" [ngClass]="{hidden: !showMultiSelect}"
+  <div #multiSelectContainer class="multi-select-container" [ngClass]="{'multi-select-hidden': !showMultiSelect || disabled}"
        (blur)="setShowMultiSelect(false)" tabindex="1">
     <div class="multi-select-option" *ngFor="let field of fields" (click)="selectOption(field)">
       <input type="checkbox" [checked]="values.includes(field)">
@@ -10,7 +10,7 @@
     </div>
   </div>
   <div id="multi-select-toggle" class="multi-select-toggle" (focus)="setShowMultiSelect(true)"
-       (blur)="focusMultiSelect()" tabindex="1">
+       (blur)="focusMultiSelect()" tabindex="1" [ngClass]="{'multi-select-disabled': disabled}">
     <span class="multi-select-list">{{values}}</span>
   </div>
 </div>
