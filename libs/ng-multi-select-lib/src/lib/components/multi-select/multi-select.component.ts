@@ -10,6 +10,7 @@ import _ from 'lodash';
 })
 export class MultiSelectComponent implements OnInit, ControlValueAccessor, AfterViewInit, OnDestroy {
   @Input() fields: any[];
+  @Input() multiSelectLabel?: string;
   localFormGroup: FormGroup;
   multiSelectChangeSubscription: Subscription;
   showResults: boolean;
