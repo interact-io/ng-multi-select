@@ -27,6 +27,7 @@ $default-select-height: 3.125rem;
         cursor: pointer;
         height: 100%;
         margin: 0;
+        pointer-events: none;
       }
 
       &:hover {
@@ -36,6 +37,8 @@ $default-select-height: 3.125rem;
       .multi-select-option-text {
         align-self: center;
         margin-left: 0.5rem;
+        cursor: pointer;
+        pointer-events: none;
 
         &.option-checked {
           color: #005CC8;

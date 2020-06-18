@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ToOptionPipe implements PipeTransform {
 
-  transform(object: unknown, objectFieldToShow: string): string {
+  transform(object: Object, objectFieldToShow: string) {
     let result = null;
     if (object && Object.keys(object).includes(objectFieldToShow)) {
       result = object[objectFieldToShow];
