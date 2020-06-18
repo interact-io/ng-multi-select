@@ -9,6 +9,6 @@
   <div id="multi-select-toggle" class="multi-select-toggle" (focus)="setShowMultiSelect(true)"
        (blur)="focusMultiSelect()" tabindex="1"
        [ngClass]="{'multi-select-disabled': disabled, invalid: localFormGroup.get('values').invalid}">
-    <span class="multi-select-list">{{objectFieldToShow ? resolveObject() : values}}</span>
+    <span class="multi-select-list">{{optionLabelsList}}</span>
   </div>
 </div>

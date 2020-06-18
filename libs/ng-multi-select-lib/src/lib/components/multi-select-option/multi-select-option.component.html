@@ -1,6 +1,10 @@
 <div class="multi-select-option" (click)="selectOption()">
   <input id="multi-select-option-checkbox" type="checkbox" [checked]="checked">
+<<<<<<< HEAD
   <label for="multi-select-option-checkbox" class="multi-select-option-text" [ngClass]="{'option-checked':checked}">
+=======
+  <label #optionLabel for="multi-select-option-checkbox" class="multi-select-option-text" [ngClass]="{'option-checked':checked}">
+>>>>>>> feature/libraryComponent
     <ng-content></ng-content>
   </label>
 </div>
