@@ -3,17 +3,21 @@
     Edit selectObjectsLabel
     <input [(ngModel)]="selectObjectsLabel" [ngModelOptions]="{standalone: true}">
   </label>
-  <interact-multi-select [options]="objectsList" formControlName="objects"
-                         [disabled]="disabled" [objectFieldToShow]="'title'"
-                         [multiSelectLabel]="selectObjectsLabel?selectObjectsLabel:''"></interact-multi-select>
+  <interact-multi-select formControlName="objects" [disabled]="disabled"
+                         [multiSelectLabel]="selectObjectsLabel?selectObjectsLabel:''">
+    <interact-multi-select-option *ngFor="let object of objectsList"
+                                  [value]="object">{{object.title}}</interact-multi-select-option>
+  </interact-multi-select>
   <hr>
   <label>
     Edit selectNumbersLabel
     <input [(ngModel)]="selectNumbersLabel" [ngModelOptions]="{standalone: true}">
   </label>
-  <interact-multi-select [options]="numbersList" formControlName="numbers"
-                         [disabled]="disabled"
-                         [multiSelectLabel]="selectNumbersLabel?selectNumbersLabel:''"></interact-multi-select>
+  <interact-multi-select formControlName="numbers" [disabled]="disabled"
+                         [multiSelectLabel]="selectNumbersLabel?selectNumbersLabel:''">
+    <interact-multi-select-option *ngFor="let number of numbersList"
+                                  [value]="number">{{number}}</interact-multi-select-option>
+  </interact-multi-select>
   <hr>
   <p>liste 1 : {{localFormGroup.controls['objects'].value}}</p>
   <p>liste 2 : {{localFormGroup.controls['numbers'].value}}</p>

@@ -35,7 +35,7 @@ export class MultiSelectFormComponent implements OnInit {
   ngOnInit(): void {
     this.localFormGroup = this.formBuilder.group({
       objects: [[], Validators.required],
-      numbers: [[], Validators.required]
+      numbers: [[13], Validators.required]
     });
   }
 
