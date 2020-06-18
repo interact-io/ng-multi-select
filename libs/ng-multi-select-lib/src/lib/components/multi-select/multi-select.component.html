@@ -4,12 +4,7 @@
   <div #multiSelectContainer class="multi-select-container"
        [ngClass]="{'multi-select-hidden': !showMultiSelect || disabled}"
        (blur)="setShowMultiSelect(false)" tabindex="1">
-    <div class="multi-select-option" *ngFor="let option of options" (click)="selectOption(option)">
-      <input id="multi-select-option-checkbox" type="checkbox" [checked]="values.includes(option)">
-      <label for="multi-select-option-checkbox" class="multi-select-option-text"
-             [ngClass]="{'option-checked': values.includes(option)}">
-        {{objectFieldToShow ? (option | toOption : objectFieldToShow) : option}}</label>
-    </div>
+    <ng-content></ng-content>
   </div>
   <div id="multi-select-toggle" class="multi-select-toggle" (focus)="setShowMultiSelect(true)"
        (blur)="focusMultiSelect()" tabindex="1"

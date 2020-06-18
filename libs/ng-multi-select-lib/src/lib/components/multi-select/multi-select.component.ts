@@ -1,8 +1,20 @@
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, Optional, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ContentChildren,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  Optional,
+  QueryList,
+  ViewChild
+} from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup, NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import _ from 'lodash';
 import { ToOptionPipe } from '../../pipes/to-option.pipe';
+import { MultiSelectOptionComponent } from '../multi-select-option/multi-select-option.component';
 
 @Component({
   selector: 'interact-multi-select',
@@ -10,7 +22,6 @@ import { ToOptionPipe } from '../../pipes/to-option.pipe';
   styleUrls: ['./multi-select.component.scss']
 })
 export class MultiSelectComponent implements OnInit, ControlValueAccessor, AfterViewInit, OnDestroy {
-  @Input() options: any[];
   @Input() multiSelectLabel?: string;
   @Input() disabled?: boolean;
   @Input() objectFieldToShow?: string;
@@ -20,6 +31,7 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
   @ViewChild('multiSelectContainer') multiSelectContainer: ElementRef;
   onChange: (value: any[]) => {};
   onTouched: () => {};
+  @ContentChildren(MultiSelectOptionComponent, { descendants: true }) private options: QueryList<MultiSelectOptionComponent>;
 
   constructor(@Optional() public ngControl: NgControl, private formBuilder: FormBuilder, private toOptionPipe: ToOptionPipe) {
     if (ngControl) {
@@ -40,6 +52,14 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
   ngAfterViewInit(): void {
     this.multiSelectChangeSubscription = this.localFormGroup.get('values').valueChanges.subscribe((val: any[]) => {
       this.updateInput(val);
+    });
+    this.options.toArray().forEach((option: MultiSelectOptionComponent) => {
+      option.selectOptionEvent.subscribe(_ => {
+        if (option.checked !== null) {
+          this.selectOption(option.value);
+        }
+        option.checked = this.values.includes(option.value);
+      });
     });
   }
 
@@ -77,8 +97,8 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
     }
   }
 
-  selectOption(field: any) {
-    this.localFormGroup.controls['values'].patchValue(_.xor(this.values, [field]));
+  selectOption(value: any) {
+    this.localFormGroup.controls['values'].patchValue(_.xor(this.values, [value]));
   }
 
   focusMultiSelect() {
