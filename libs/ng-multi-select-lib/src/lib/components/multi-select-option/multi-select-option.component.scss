@@ -1,0 +1,30 @@
+.multi-select-option {
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  padding: 0 1rem;
+  background: white;
+
+  > input {
+    cursor: pointer;
+    height: 100%;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  &:hover {
+    background: whitesmoke;
+  }
+
+  .multi-select-option-text {
+    align-self: center;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    pointer-events: none;
+
+    &.option-checked {
+      color: #005CC8;
+    }
+  }
+}

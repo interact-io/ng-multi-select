@@ -15,37 +15,6 @@ $default-select-height: 3.125rem;
     padding: 0;
     position: absolute;
 
-    .multi-select-option {
-      height: $default-select-height;
-      cursor: pointer;
-      display: flex;
-      flex-direction: row;
-      padding: 0 1rem;
-      background: white;
-
-      > input {
-        cursor: pointer;
-        height: 100%;
-        margin: 0;
-        pointer-events: none;
-      }
-
-      &:hover {
-        background: whitesmoke;
-      }
-
-      .multi-select-option-text {
-        align-self: center;
-        margin-left: 0.5rem;
-        cursor: pointer;
-        pointer-events: none;
-
-        &.option-checked {
-          color: #005CC8;
-        }
-      }
-    }
-
     &.multi-select-hidden {
       visibility: hidden;
     }
