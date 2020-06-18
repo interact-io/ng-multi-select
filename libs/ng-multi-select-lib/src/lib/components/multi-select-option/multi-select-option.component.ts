@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'interact-multi-select-option',
@@ -8,12 +8,15 @@ import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/
 export class MultiSelectOptionComponent implements AfterViewInit {
   @Input() value: any;
   @Output() selectOptionEvent = new EventEmitter();
+  @ViewChild('optionLabel') optionLabelRef: ElementRef;
+  optionLabel: any;
   checked: boolean = null;
 
   constructor() {
   }
 
   ngAfterViewInit(): void {
+    this.optionLabel = this.optionLabelRef.nativeElement.innerHTML;
     setTimeout(_ => this.selectOption());
   }
 

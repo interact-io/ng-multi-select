@@ -4,6 +4,7 @@ import {
   ContentChildren,
   ElementRef,
   Input,
+  OnChanges,
   OnDestroy,
   OnInit,
   Optional,
@@ -13,7 +14,6 @@ import {
 import { ControlValueAccessor, FormBuilder, FormGroup, NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import _ from 'lodash';
-import { ToOptionPipe } from '../../pipes/to-option.pipe';
 import { MultiSelectOptionComponent } from '../multi-select-option/multi-select-option.component';
 
 @Component({
@@ -21,19 +21,19 @@ import { MultiSelectOptionComponent } from '../multi-select-option/multi-select-
   templateUrl: './multi-select.component.html',
   styleUrls: ['./multi-select.component.scss']
 })
-export class MultiSelectComponent implements OnInit, ControlValueAccessor, AfterViewInit, OnDestroy {
+export class MultiSelectComponent implements OnInit, ControlValueAccessor, AfterViewInit, OnChanges, OnDestroy {
   @Input() multiSelectLabel?: string;
   @Input() disabled?: boolean;
-  @Input() objectFieldToShow?: string;
   localFormGroup: FormGroup;
   multiSelectChangeSubscription: Subscription;
   showMultiSelect: boolean;
   @ViewChild('multiSelectContainer') multiSelectContainer: ElementRef;
+  optionLabelsList = [];
   onChange: (value: any[]) => {};
   onTouched: () => {};
   @ContentChildren(MultiSelectOptionComponent, { descendants: true }) private options: QueryList<MultiSelectOptionComponent>;
 
-  constructor(@Optional() public ngControl: NgControl, private formBuilder: FormBuilder, private toOptionPipe: ToOptionPipe) {
+  constructor(@Optional() public ngControl: NgControl, private formBuilder: FormBuilder) {
     if (ngControl) {
       ngControl.valueAccessor = this;
     }
@@ -55,12 +55,22 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
     });
     this.options.toArray().forEach((option: MultiSelectOptionComponent) => {
       option.selectOptionEvent.subscribe(_ => {
-        if (option.checked !== null) {
+        if (option.checked === null) {
+          option.checked = this.values.includes(option.value);
+          if (option.checked) {
+            this.updateOptionLabelsList(option.optionLabel);
+          }
+        } else {
           this.selectOption(option.value);
+          this.updateOptionLabelsList(option.optionLabel);
+          option.checked = this.values.includes(option.value);
         }
-        option.checked = this.values.includes(option.value);
       });
     });
+  }
+
+  ngOnChanges() {
+
   }
 
   updateInput(val: string[]) {
@@ -113,8 +123,8 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
     }
   }
 
-  resolveObject(): string[] {
-    return this.values.map(value => this.toOptionPipe.transform(value, this.objectFieldToShow));
+  updateOptionLabelsList(optionLabel) {
+    this.optionLabelsList = _.xor(this.optionLabelsList, [optionLabel]);
   }
 
 }
