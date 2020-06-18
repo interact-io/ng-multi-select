@@ -4,7 +4,6 @@ import {
   ContentChildren,
   ElementRef,
   Input,
-  OnChanges,
   OnDestroy,
   OnInit,
   Optional,
@@ -21,7 +20,7 @@ import { MultiSelectOptionComponent } from '../multi-select-option/multi-select-
   templateUrl: './multi-select.component.html',
   styleUrls: ['./multi-select.component.scss']
 })
-export class MultiSelectComponent implements OnInit, ControlValueAccessor, AfterViewInit, OnChanges, OnDestroy {
+export class MultiSelectComponent implements OnInit, ControlValueAccessor, AfterViewInit, OnDestroy {
   @Input() multiSelectLabel?: string;
   @Input() disabled?: boolean;
   localFormGroup: FormGroup;
@@ -67,10 +66,6 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
         }
       });
     });
-  }
-
-  ngOnChanges() {
-
   }
 
   updateInput(val: string[]) {
