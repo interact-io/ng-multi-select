@@ -1,0 +1,14 @@
+<div class="multi-select-wrapper">
+  <label for="multi-select-toggle"
+         class="multi-select-label">{{multiSelectLabel ? multiSelectLabel : 'Choose values'}}</label>
+  <div #multiSelectContainer class="multi-select-container"
+       [ngClass]="{'multi-select-hidden': !showMultiSelect || disabled}"
+       (blur)="setShowMultiSelect(false)" tabindex="1">
+    <ng-content></ng-content>
+  </div>
+  <div id="multi-select-toggle" class="multi-select-toggle" (focus)="setShowMultiSelect(true)"
+       (blur)="focusMultiSelect()" tabindex="1"
+       [ngClass]="{'multi-select-disabled': disabled, invalid: localFormGroup.get('values').invalid}">
+    <span class="multi-select-list">{{optionLabelsList}}</span>
+  </div>
+</div>
