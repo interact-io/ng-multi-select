@@ -1,16 +1,13 @@
-# interact.io ng-multi-select
+# interact.io ng-multi-select-lib
 
-## Dependencies
+## Peer dependencies
 * `@angular/common`: ^9.x.x
 * `@angular/core`: ^9.x.x
-* `@angular/forms`: ^9.x.x
-* `@nrwl/angular`: ^9.x.x
-* `rxjs`: ~6.x.x
+* `lodash.xor`: ^4.5.0
 
-## Steps to import the multi-select lib
-* Add the submodule to your project: `yarn add @interact/ng-multi-select`
-* Import `NgMultiSelectLibModule` to your `app.module.ts` (see `app.module.ts` for implementation)
-* Add the reference to the multi-select lib in nx.json, angular.json, and tsconfig.json (see eponym files at the root of this project) You should now be able to reference the multi-select lib in your project using @interact/ng-multi-select
+## Steps to import the ng-multi-select-lib
+* Add the submodule to your project: `yarn add @interact.io/ng-multi-select`
+* Import `NgMultiSelectLibModule` to your `app.module.ts`
 * You are now all set! You can get started following the next section
 
 ## The nitty-gritty
