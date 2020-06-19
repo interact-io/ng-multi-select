@@ -1,5 +1,5 @@
 {
-  "npmScope": "ng-multi-select",
+  "npmScope": "interact",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": {
