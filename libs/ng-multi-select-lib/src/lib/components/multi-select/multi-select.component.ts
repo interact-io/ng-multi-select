@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup, NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import * as xor from 'lodash/xor';
+import xor from 'lodash/xor';
 import { MultiSelectOptionComponent } from '../multi-select-option/multi-select-option.component';
 
 @Component({
