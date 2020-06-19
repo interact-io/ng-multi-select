@@ -8,9 +8,9 @@
 * `rxjs`: ~6.x.x
 
 ## Steps to import the multi-select lib
-* Add the submodule in your project: `git submodule add git@github.com:interact-io/ng-multi-select.git`
+* Add the submodule to your project: `yarn add @interact/ng-multi-select`
 * Import `NgMultiSelectLibModule` to your `app.module.ts` (see `app.module.ts` for implementation)
-* Add the reference to the multi-select lib in nx.json, angular.json, and tsconfig.json (see eponym files at the root of this project) You should now be able to reference the multi-select lib in your project using @interactio/ng-multi-select
+* Add the reference to the multi-select lib in nx.json, angular.json, and tsconfig.json (see eponym files at the root of this project) You should now be able to reference the multi-select lib in your project using @interact/ng-multi-select
 * You are now all set! You can get started following the next section
 
 ## The nitty-gritty
