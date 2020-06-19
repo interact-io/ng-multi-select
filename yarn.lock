@@ -247,11 +247,6 @@
   resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-9.1.11.tgz#4da8e2a4231d5162304746a39f54cb2d3f241b7c"
   integrity sha512-KDxoiFhW4UD+EqchcKpQVSLwg9Rd3JbWytZLchFV6nH8BFnshfJtw2tyPT8bMhFVG9n9zSR4QSGaozWgoDs9mw==
 
-"@angular/router@^9.1.0":
-  version "9.1.11"
-  resolved "https://registry.yarnpkg.com/@angular/router/-/router-9.1.11.tgz#b6d28af55fe5631bbc46f306a0e7866253d4f3b1"
-  integrity sha512-D6CCDeSK/F6dWSB/a1g/zB072xG5LadLSV8afQ57oX1KHePx21LcoRG4tUtFMMHh/jZXRc9pMQIR1/9FrrXF3Q==
-
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.1", "@babel/code-frame@^7.8.3":
   version "7.10.1"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.10.1.tgz#d5481c5095daa1c57e16e54c6f9198443afb49ff"
@@ -6278,6 +6273,11 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
+
+lodash.xor@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.xor/-/lodash.xor-4.5.0.tgz#4d48ed7e98095b0632582ba714d3ff8ae8fb1db6"
+  integrity sha1-TUjtfpgJWwYyWCunFNP/iuj7HbY=
 
 lodash@4.17.15, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.5.0:
   version "4.17.15"

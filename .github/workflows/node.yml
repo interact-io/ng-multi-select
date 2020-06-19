@@ -29,7 +29,7 @@ jobs:
     - name: Test multi-select
       uses: ianwalter/puppeteer@v2.0.0
       with:
-        args: yarn test:multi-select:github
+        args: yarn test:ng-multi-select-lib:github
     - name: Test-Build
       uses: ianwalter/puppeteer@v2.0.0
       with:
