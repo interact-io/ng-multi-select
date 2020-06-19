@@ -1,0 +1,22 @@
+{
+  "name": "@interact.io/ng-multi-select-lib",
+  "version": "0.0.3",
+  "peerDependencies": {
+    "@angular/common": "^9.1.11",
+    "@angular/core": "^9.1.11",
+    "lodash.xor": "^4.5.0"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  },
+  "description": "A NPM package that provides you with a convenient multiple select component for your forms.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/interact-io/ng-multi-select.git"
+  },
+  "author": "Paul Van Uytvinck",
+  "bugs": {
+    "url": "https://github.com/interact-io/ng-multi-select/issues"
+  },
+  "homepage": "https://github.com/interact-io/ng-multi-select.git"
+}

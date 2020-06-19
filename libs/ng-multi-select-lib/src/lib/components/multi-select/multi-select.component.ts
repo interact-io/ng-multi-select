@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup, NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import _ from 'lodash';
+import xor from 'lodash/xor';
 import { MultiSelectOptionComponent } from '../multi-select-option/multi-select-option.component';
 
 @Component({
@@ -103,7 +103,7 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
   }
 
   selectOption(value: any) {
-    this.localFormGroup.controls['values'].patchValue(_.xor(this.values, [value]));
+    this.localFormGroup.controls['values'].patchValue(xor(this.values, [value]));
   }
 
   focusMultiSelect() {
@@ -119,7 +119,7 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
   }
 
   updateOptionLabelsList(optionLabel) {
-    this.optionLabelsList = _.xor(this.optionLabelsList, [optionLabel]);
+    this.optionLabelsList = xor(this.optionLabelsList, [optionLabel]);
   }
 
 }

@@ -1,8 +1,8 @@
 {
   "extends": "../../tslint.json",
   "rules": {
-    "directive-selector": [true, "attribute", "ngMultiSelectLib", "camelCase"],
-    "component-selector": [true, "element", "ng-multi-select-lib", "kebab-case"]
+    "directive-selector": [true, "attribute", "interact", "camelCase"],
+    "component-selector": [true, "element", "interact", "kebab-case"]
   },
   "linterOptions": {
     "exclude": ["!**/*"]
