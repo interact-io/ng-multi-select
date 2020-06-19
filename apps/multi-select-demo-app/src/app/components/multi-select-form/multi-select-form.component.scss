@@ -1,0 +1,34 @@
+.ms-form-wrapper {
+  padding: 2rem 5rem;
+
+  .ms-form-fields {
+    width: 20rem;
+
+    label {
+      cursor: text;
+    }
+
+    .ms-objects .ms-objects-label, .ms-numbers .ms-numbers-label {
+      margin: 0.5rem 0;
+
+      &:hover {
+        border-color: transparent;
+        box-shadow: 0 0 0 0.125rem darkgrey;
+      }
+
+      &:focus {
+        border-color: transparent;
+        outline: none;
+        box-shadow: 0 0 0 0.125rem cornflowerblue;
+      }
+    }
+
+    .ms-numbers {
+      margin-top: 2rem;
+    }
+  }
+
+  .ms-content {
+    margin-top: 3rem;
+  }
+}

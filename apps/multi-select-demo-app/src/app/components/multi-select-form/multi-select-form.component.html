@@ -1,0 +1,37 @@
+<form class="ms-form-wrapper" [formGroup]="localFormGroup">
+  <h1>multi-select-demo-app</h1>
+  <div class="ms-form-fields">
+    <div class="ms-objects">
+      <label for="ms-objects-label">Edit multi-select objects label</label>
+      <input id="ms-objects-label" class="ms-objects-label"
+             [(ngModel)]="selectObjectsLabel"
+             [ngModelOptions]="{standalone: true}">
+      <interact-multi-select formControlName="objects" [disabled]="disabled"
+                             [multiSelectLabel]="selectObjectsLabel?selectObjectsLabel:''">
+        <interact-multi-select-option *ngFor="let object of objectsList"
+                                      [value]="object">{{object.title}}</interact-multi-select-option>
+      </interact-multi-select>
+    </div>
+    <div class="ms-numbers">
+      <label for="ms-numbers-label">Edit multi-select numbers label</label>
+      <input id="ms-numbers-label" class="ms-numbers-label"
+             [(ngModel)]="selectNumbersLabel"
+             [ngModelOptions]="{standalone: true}">
+      <interact-multi-select formControlName="numbers" [disabled]="disabled"
+                             [multiSelectLabel]="selectNumbersLabel?selectNumbersLabel:''">
+        <interact-multi-select-option *ngFor="let number of numbersList"
+                                      [value]="number">{{number}}</interact-multi-select-option>
+      </interact-multi-select>
+    </div>
+  </div>
+  <div class="ms-content">
+    <ul>
+      <li *ngFor="let object of localFormGroup.controls['objects'].value">{{object | json}}</li>
+    </ul>
+    <p>Content of numbers: {{localFormGroup.controls['numbers'].value}}</p>
+  </div>
+  <div class="ms-actions">
+    <button type="button" (click)="this.disabled = !this.disabled">{{disabled ? 'ENABLE' : 'DISABLE'}}</button>
+    <button type="submit" [disabled]="localFormGroup.errors || localFormGroup.invalid">SUBMIT</button>
+  </div>
+</form>
