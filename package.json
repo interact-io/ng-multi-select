@@ -10,7 +10,7 @@
     "build": "ng build",
     "build:ng-multi-select-lib": "ng build ng-multi-select-lib",
     "test": "ng test",
-    "test:ng-multi-select-lib:github": "ng test ng-multi-select-lib",
+    "test:ng-multi-select-lib": "ng test ng-multi-select-lib",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
     "affected:apps": "nx affected:apps",
