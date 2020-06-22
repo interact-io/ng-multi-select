@@ -7,8 +7,7 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  Optional,
-  QueryList, Self,
+  QueryList,
   ViewChild
 } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormGroup, NgControl } from '@angular/forms';
@@ -34,7 +33,7 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
   onTouched: () => {};
   @ContentChildren(MultiSelectOptionComponent, { descendants: true }) private options: QueryList<MultiSelectOptionComponent>;
 
-  constructor(@Optional() public ngControl: NgControl, private formBuilder: FormBuilder) {
+  constructor(public ngControl: NgControl, private formBuilder: FormBuilder) {
     if (ngControl) {
       ngControl.valueAccessor = this;
     }

@@ -1,6 +1,6 @@
 {
   "name": "@interact.io/ng-multi-select-lib",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "peerDependencies": {
     "@angular/common": "^9.1.11",
     "@angular/core": "^9.1.11",
