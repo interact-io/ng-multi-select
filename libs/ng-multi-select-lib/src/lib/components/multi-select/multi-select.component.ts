@@ -34,7 +34,7 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
   onTouched: () => {};
   @ContentChildren(MultiSelectOptionComponent, { descendants: true }) private options: QueryList<MultiSelectOptionComponent>;
 
-  constructor(@Optional() @Self() public ngControl: NgControl, private formBuilder: FormBuilder) {
+  constructor(@Optional() public ngControl: NgControl, private formBuilder: FormBuilder) {
     if (ngControl) {
       ngControl.valueAccessor = this;
     }

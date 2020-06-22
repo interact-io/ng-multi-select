@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MultiSelectComponent } from './multi-select.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgMultiSelectLibModule } from '@ng-multi-select/ng-multi-select-lib';
 
 describe('MultiSelectComponent', () => {
@@ -11,7 +11,7 @@ describe('MultiSelectComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [MultiSelectComponent],
-      imports: [ReactiveFormsModule, NgMultiSelectLibModule]
+      imports: [ReactiveFormsModule, NgMultiSelectLibModule, FormsModule]
     })
       .compileComponents();
   }));
