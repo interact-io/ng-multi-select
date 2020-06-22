@@ -6,7 +6,7 @@
 * `lodash.xor`: ^4.5.0
 
 ## Steps to import the ng-multi-select-lib
-* Add the submodule to your project: `yarn add @interact.io/ng-multi-select`
+* Add the submodule to your project: `yarn add @interact.io/ng-multi-select-lib`
 * Import `NgMultiSelectLibModule` to your `app.module.ts`
 * You are now all set! You can get started following the next section
 
