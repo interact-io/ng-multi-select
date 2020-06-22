@@ -25,7 +25,7 @@ export class MultiSelectFormComponent implements OnInit {
     { id: 3, title: 'object3', labeledValues: [{ label: '3_1' }, { label: '3_2' }] },
     { id: 4, title: 'object4', labeledValues: [{ label: '4_1' }, { label: '4_2' }] }];
   objectsList = [];
-  numbersListData = [4,9,13,52,104,1062];
+  numbersListData = [4, 9, 13, 52, 104, 1062];
   numbersList = [];
   disabled = false;
   selectObjectsLabel = '';
@@ -39,10 +39,10 @@ export class MultiSelectFormComponent implements OnInit {
       objects: [[], Validators.required],
       numbers: [[13], Validators.required]
     });
-    setTimeout(_=>{
+    setTimeout(_ => {
       this.numbersList = [...this.numbersListData];
       this.objectsList = [...this.objectsListData];
-    },0)
+    }, 1000);
   }
 
 }
