@@ -4,6 +4,7 @@ import {
   Component,
   ContentChildren,
   ElementRef,
+  forwardRef,
   Input,
   OnDestroy,
   OnInit,
@@ -11,7 +12,7 @@ import {
   QueryList,
   ViewChild
 } from '@angular/core';
-import { ControlValueAccessor, FormBuilder, FormGroup, NgControl } from '@angular/forms';
+import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import xor from 'lodash/xor';
 import { MultiSelectOptionComponent } from '../multi-select-option/multi-select-option.component';
@@ -20,7 +21,14 @@ import { startWith } from 'rxjs/operators';
 @Component({
   selector: 'interact-multi-select',
   templateUrl: './multi-select.component.html',
-  styleUrls: ['./multi-select.component.scss']
+  styleUrls: ['./multi-select.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: forwardRef(() => MultiSelectComponent)
+    }
+  ]
 })
 export class MultiSelectComponent implements OnInit, ControlValueAccessor, AfterViewInit, AfterContentInit, OnDestroy {
   @Input() multiSelectLabel?: string;
