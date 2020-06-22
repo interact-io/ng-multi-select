@@ -1,4 +1,5 @@
 import {
+  AfterContentInit,
   AfterViewInit,
   Component,
   ContentChildren,
@@ -14,13 +15,14 @@ import { ControlValueAccessor, FormBuilder, FormGroup, NgControl } from '@angula
 import { Subscription } from 'rxjs';
 import xor from 'lodash/xor';
 import { MultiSelectOptionComponent } from '../multi-select-option/multi-select-option.component';
+import { startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'interact-multi-select',
   templateUrl: './multi-select.component.html',
   styleUrls: ['./multi-select.component.scss']
 })
-export class MultiSelectComponent implements OnInit, ControlValueAccessor, AfterViewInit, OnDestroy {
+export class MultiSelectComponent implements OnInit, ControlValueAccessor, AfterViewInit, AfterContentInit, OnDestroy {
   @Input() multiSelectLabel?: string;
   @Input() disabled?: boolean;
   localFormGroup: FormGroup;
@@ -52,6 +54,13 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
     this.multiSelectChangeSubscription = this.localFormGroup.get('values').valueChanges.subscribe((val: any[]) => {
       this.updateInput(val);
     });
+  }
+
+  ngAfterContentInit() {
+    this.options.changes.pipe(startWith(this.options)).subscribe(_ => this.initOptions());
+  }
+
+  initOptions() {
     this.options.toArray().forEach((option: MultiSelectOptionComponent) => {
       option.selectOptionEvent.subscribe(_ => {
         if (option.checked === null) {
