@@ -4,15 +4,14 @@ import {
   Component,
   ContentChildren,
   ElementRef,
-  forwardRef,
   Input,
   OnDestroy,
   OnInit,
   Optional,
-  QueryList,
+  QueryList, Self,
   ViewChild
 } from '@angular/core';
-import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
+import { ControlValueAccessor, FormBuilder, FormGroup, NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import xor from 'lodash/xor';
 import { MultiSelectOptionComponent } from '../multi-select-option/multi-select-option.component';
@@ -21,14 +20,7 @@ import { startWith } from 'rxjs/operators';
 @Component({
   selector: 'interact-multi-select',
   templateUrl: './multi-select.component.html',
-  styleUrls: ['./multi-select.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: forwardRef(() => MultiSelectComponent)
-    }
-  ]
+  styleUrls: ['./multi-select.component.scss']
 })
 export class MultiSelectComponent implements OnInit, ControlValueAccessor, AfterViewInit, AfterContentInit, OnDestroy {
   @Input() multiSelectLabel?: string;
@@ -42,7 +34,7 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
   onTouched: () => {};
   @ContentChildren(MultiSelectOptionComponent, { descendants: true }) private options: QueryList<MultiSelectOptionComponent>;
 
-  constructor(@Optional() public ngControl: NgControl, private formBuilder: FormBuilder) {
+  constructor(@Optional() @Self() public ngControl: NgControl, private formBuilder: FormBuilder) {
     if (ngControl) {
       ngControl.valueAccessor = this;
     }
