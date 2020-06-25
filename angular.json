@@ -26,7 +26,10 @@
               "libs/ng-multi-select-lib/tsconfig.lib.json",
               "libs/ng-multi-select-lib/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/ng-multi-select-lib/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-multi-select-lib/**/*"
+            ]
           }
         },
         "test": {
@@ -68,7 +71,9 @@
               "apps/multi-select-demo-app/src/favicon.ico",
               "apps/multi-select-demo-app/src/assets"
             ],
-            "styles": ["apps/multi-select-demo-app/src/styles.scss"],
+            "styles": [
+              "apps/multi-select-demo-app/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -167,7 +172,9 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/multi-select-demo-app-e2e/tsconfig.e2e.json"],
+            "tsConfig": [
+              "apps/multi-select-demo-app-e2e/tsconfig.e2e.json"
+            ],
             "exclude": [
               "**/node_modules/**",
               "!apps/multi-select-demo-app-e2e/**/*"
@@ -178,7 +185,8 @@
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@nrwl/angular",
+    "analytics": false
   },
   "schematics": {
     "@nrwl/angular:application": {
