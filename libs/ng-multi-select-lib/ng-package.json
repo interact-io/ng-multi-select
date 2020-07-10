@@ -6,5 +6,8 @@
     "umdModuleIds": {
       "lodash/xor": "xor"
     }
-  }
+  },
+  "assets": [
+    "ngcc.config.js"
+  ]
 }
