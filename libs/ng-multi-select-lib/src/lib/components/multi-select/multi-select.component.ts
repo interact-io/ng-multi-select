@@ -3,7 +3,7 @@ import {
   AfterViewInit,
   Component,
   ContentChildren,
-  ElementRef,
+  ElementRef, HostListener,
   Input,
   OnDestroy,
   OnInit,
@@ -34,7 +34,7 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
   onTouched: () => {};
   @ContentChildren(MultiSelectOptionComponent, { descendants: true }) private options: QueryList<MultiSelectOptionComponent>;
 
-  constructor(@Optional() public ngControl: NgControl, private formBuilder: FormBuilder) {
+  constructor(@Optional() public ngControl: NgControl, private formBuilder: FormBuilder, private elementRef: ElementRef) {
     if (ngControl) {
       ngControl.valueAccessor = this;
     }
@@ -129,6 +129,14 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
 
   updateOptionLabelsList(optionLabel) {
     this.optionLabelsList = xor(this.optionLabelsList, [optionLabel]);
+  }
+
+  @HostListener('document:click', ['$event.target'])
+  public onClick(target) {
+    const clickedInside = this.elementRef.nativeElement.contains(target);
+    if (!clickedInside) {
+      this.setShowMultiSelect(false);
+    }
   }
 
 }
