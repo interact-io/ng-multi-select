@@ -32,6 +32,8 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
   optionLabelsList = [];
   onChange: (value: any[]) => {};
   onTouched: () => {};
+  clickOutsideToCloseListener: any;
+  self = this;
   @ContentChildren(MultiSelectOptionComponent, { descendants: true }) private options: QueryList<MultiSelectOptionComponent>;
 
   constructor(@Optional() public ngControl: NgControl, private formBuilder: FormBuilder, private elementRef: ElementRef) {
@@ -109,21 +111,29 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
     if (this.multiSelectChangeSubscription) {
       this.multiSelectChangeSubscription.unsubscribe();
     }
+    if (this.clickOutsideToCloseListener != null) {
+      document.removeEventListener('click', this.clickOutsideToClose);
+      this.clickOutsideToCloseListener = null;
+    }
   }
 
   selectOption(value: any) {
     this.localFormGroup.controls['values'].patchValue(xor(this.values, [value]));
   }
 
-  focusMultiSelect() {
-    if (this.showMultiSelect) {
-      this.multiSelectContainer.nativeElement.focus();
-    }
-  }
-
   setShowMultiSelect(value: boolean) {
     if (!this.disabled) {
       this.showMultiSelect = value;
+    }
+    if (value) {
+      if(document) {
+        this.clickOutsideToCloseListener = document.addEventListener('click', this.clickOutsideToClose.bind(this));
+      }
+    } else {
+      if (this.clickOutsideToCloseListener != null) {
+        document.removeEventListener('click', this.clickOutsideToClose);
+        this.clickOutsideToCloseListener = null;
+      }
     }
   }
 
@@ -131,9 +141,8 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
     this.optionLabelsList = xor(this.optionLabelsList, [optionLabel]);
   }
 
-  @HostListener('document:click', ['$event.target'])
-  public onClick(target) {
-    const clickedInside = this.elementRef.nativeElement.contains(target);
+  public clickOutsideToClose(event) {
+    const clickedInside = this.elementRef.nativeElement.contains(event.target);
     if (!clickedInside) {
       this.setShowMultiSelect(false);
     }
