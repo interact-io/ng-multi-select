@@ -29,10 +29,12 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
   multiSelectChangeSubscription: Subscription;
   showMultiSelect: boolean;
   @ViewChild('multiSelectContainer') multiSelectContainer: ElementRef;
+  @ViewChild('multiSelectWrapper') multiSelectWrapper: ElementRef;
   optionLabelsList = [];
   onChange: (value: any[]) => {};
   onTouched: () => {};
   clickOutsideToCloseListener: any;
+  place: 'top' | 'bottom';
   self = this;
   @ContentChildren(MultiSelectOptionComponent, { descendants: true }) private options: QueryList<MultiSelectOptionComponent>;
 
@@ -56,10 +58,12 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
     this.multiSelectChangeSubscription = this.localFormGroup.get('values').valueChanges.subscribe((val: any[]) => {
       this.updateInput(val);
     });
+
   }
 
   ngAfterContentInit() {
     this.options.changes.pipe(startWith(this.options)).subscribe(_ => this.initOptions());
+
   }
 
   initOptions() {
@@ -122,6 +126,8 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor, After
   }
 
   setShowMultiSelect(value: boolean) {
+    const distanceToBottom = window.innerHeight - this.multiSelectWrapper.nativeElement.offsetTop - this.multiSelectWrapper.nativeElement.offsetHeight;
+    this.place = distanceToBottom > this.multiSelectContainer.nativeElement.offsetHeight ? 'bottom' : 'top';
     if (!this.disabled) {
       this.showMultiSelect = value;
     }
