@@ -20,7 +20,7 @@ interface LabeledValue {
 export class MultiSelectFormComponent implements OnInit {
   localFormGroup: FormGroup;
   objectsListData: MultiSelectDemoInterface[] = [
-    { id: 1, title: 'object1', labeledValues: [{ label: '1_1' }, { label: '1_2' }] },
+    { id: 1, title: 'object1 & test', labeledValues: [{ label: '1_1' }, { label: '1_2' }] },
     { id: 2, title: 'object2', labeledValues: [{ label: '2_1' }, { label: '2_2' }] },
     { id: 3, title: 'object3', labeledValues: [{ label: '3_1' }, { label: '3_2' }] },
     { id: 4, title: 'object4', labeledValues: [{ label: '4_1' }, { label: '4_2' }] }];
