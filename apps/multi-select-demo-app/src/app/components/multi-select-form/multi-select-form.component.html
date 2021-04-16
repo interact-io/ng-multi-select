@@ -9,7 +9,7 @@
       <interact-multi-select formControlName="objects" [disabled]="disabled"
                              [multiSelectLabel]="selectObjectsLabel?selectObjectsLabel:''">
         <interact-multi-select-option *ngFor="let object of objectsList"
-                                      [value]="object">{{object.title}}</interact-multi-select-option>
+                                      [value]="object"><b>{{object.title}}</b></interact-multi-select-option>
       </interact-multi-select>
     </div>
     <div class="ms-numbers">

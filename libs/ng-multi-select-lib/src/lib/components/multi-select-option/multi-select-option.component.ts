@@ -16,7 +16,7 @@ export class MultiSelectOptionComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.optionLabel = this.optionLabelRef.nativeElement.innerHTML.replace(/&amp;/g, '&');
+    this.optionLabel = this.optionLabelRef.nativeElement.textContent;
     setTimeout(_ => this.selectOption());
   }
 
