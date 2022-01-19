@@ -39,7 +39,10 @@
             "main": "libs/ng-multi-select-lib/src/test.ts",
             "tsConfig": "libs/ng-multi-select-lib/tsconfig.spec.json",
             "karmaConfig": "libs/ng-multi-select-lib/karma.conf.js"
-          }
+          },
+          "outputs": [
+            "coverage/libs/ng-multi-select-lib"
+          ]
         }
       },
       "schematics": {
@@ -88,7 +91,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -106,7 +108,10 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -148,7 +153,10 @@
             "styles": [],
             "scripts": [],
             "assets": []
-          }
+          },
+          "outputs": [
+            "coverage/apps/multi-select-demo-app"
+          ]
         }
       }
     },
