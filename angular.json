@@ -11,7 +11,8 @@
           "builder": "@nrwl/angular:package",
           "options": {
             "tsConfig": "libs/ng-multi-select-lib/tsconfig.lib.json",
-            "project": "libs/ng-multi-select-lib/ng-package.json"
+            "project": "libs/ng-multi-select-lib/ng-package.json",
+            "buildableProjectDepsInPackageJsonType": "dependencies"
           },
           "configurations": {
             "production": {
