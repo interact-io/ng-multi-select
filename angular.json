@@ -19,19 +19,6 @@
             }
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/ng-multi-select-lib/tsconfig.lib.json",
-              "libs/ng-multi-select-lib/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/ng-multi-select-lib/**/*"
-            ]
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -129,19 +116,6 @@
             "browserTarget": "multi-select-demo-app:build"
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/multi-select-demo-app/tsconfig.app.json",
-              "apps/multi-select-demo-app/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/multi-select-demo-app/**/*"
-            ]
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -172,18 +146,6 @@
             "production": {
               "devServerTarget": "multi-select-demo-app:serve:production"
             }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/multi-select-demo-app-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/multi-select-demo-app-e2e/**/*"
-            ]
           }
         }
       }
