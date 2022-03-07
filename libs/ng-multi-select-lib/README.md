@@ -1,8 +1,8 @@
 # interact.io ng-multi-select-lib
 
 ## Peer dependencies
-* `@angular/common`: ^9.x.x
-* `@angular/core`: ^9.x.x
+* `@angular/common`: ^13.x.x
+* `@angular/core`: ^13.x.x
 * `lodash.xor`: ^4.5.0
 
 ## Steps to import the ng-multi-select-lib
