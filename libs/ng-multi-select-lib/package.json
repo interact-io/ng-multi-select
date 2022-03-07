@@ -9,10 +9,10 @@
     "@angular/forms": "^9.1.0",
     "@angular/platform-browser": "^9.1.0",
     "@angular/platform-browser-dynamic": "^9.1.0",
-    "lodash.xor": "^4.5.0",
-    "tslib": "^1.10.0"
+    "lodash.xor": "^4.5.0"
   },
   "dependencies": {
+    "tslib": "^2.0.0"
   },
   "description": "A NPM package that provides you with a convenient multiple select component for your forms.",
   "repository": {
