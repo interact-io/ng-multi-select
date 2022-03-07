@@ -66,7 +66,6 @@
             "main": "apps/multi-select-demo-app/src/main.ts",
             "polyfills": "apps/multi-select-demo-app/src/polyfills.ts",
             "tsConfig": "apps/multi-select-demo-app/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "apps/multi-select-demo-app/src/favicon.ico",
               "apps/multi-select-demo-app/src/assets"
@@ -74,7 +73,13 @@
             "styles": [
               "apps/multi-select-demo-app/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -104,7 +109,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
