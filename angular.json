@@ -19,25 +19,12 @@
             }
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/ng-multi-select-lib/tsconfig.lib.json",
-              "libs/ng-multi-select-lib/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/ng-multi-select-lib/**/*"
-            ]
-          }
-        },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@nrwl/jest:jest",
           "options": {
-            "main": "libs/ng-multi-select-lib/src/test.ts",
+            "jestConfig": "libs/ng-multi-select-lib/jest.config.js",
             "tsConfig": "libs/ng-multi-select-lib/tsconfig.spec.json",
-            "karmaConfig": "libs/ng-multi-select-lib/karma.conf.js"
+            "setupFile": "libs/ng-multi-select-lib/src/test-setup.ts"
           }
         }
       },
@@ -66,7 +53,6 @@
             "main": "apps/multi-select-demo-app/src/main.ts",
             "polyfills": "apps/multi-select-demo-app/src/polyfills.ts",
             "tsConfig": "apps/multi-select-demo-app/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "apps/multi-select-demo-app/src/favicon.ico",
               "apps/multi-select-demo-app/src/assets"
@@ -74,7 +60,13 @@
             "styles": [
               "apps/multi-select-demo-app/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -87,7 +79,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -105,7 +96,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -124,29 +116,12 @@
             "browserTarget": "multi-select-demo-app:build"
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/multi-select-demo-app/tsconfig.app.json",
-              "apps/multi-select-demo-app/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/multi-select-demo-app/**/*"
-            ]
-          }
-        },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@nrwl/jest:jest",
           "options": {
-            "main": "apps/multi-select-demo-app/src/test.ts",
+            "jestConfig": "apps/multi-select-demo-app/jest.config.js",
             "tsConfig": "apps/multi-select-demo-app/tsconfig.spec.json",
-            "karmaConfig": "apps/multi-select-demo-app/karma.conf.js",
-            "polyfills": "apps/multi-select-demo-app/src/polyfills.ts",
-            "styles": [],
-            "scripts": [],
-            "assets": []
+            "setupFile": "apps/multi-select-demo-app/src/test-setup.ts"
           }
         }
       }
@@ -168,33 +143,8 @@
               "devServerTarget": "multi-select-demo-app:serve:production"
             }
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/multi-select-demo-app-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/multi-select-demo-app-e2e/**/*"
-            ]
-          }
         }
       }
-    }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/angular",
-    "analytics": false
-  },
-  "schematics": {
-    "@nrwl/angular:application": {
-      "unitTestRunner": "karma",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "unitTestRunner": "karma"
     }
   },
   "defaultProject": "ng-multi-select-lib"

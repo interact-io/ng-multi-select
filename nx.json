@@ -1,14 +1,18 @@
 {
-  "npmScope": "interact",
+  "npmScope": "multi-select-demo-app",
+  "affected": {
+    "defaultBase": "main"
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "packageManager": "npm"
+  },
   "implicitDependencies": {
-    "angular.json": "*",
     "package.json": {
       "dependencies": "*",
       "devDependencies": "*"
     },
-    "tsconfig.json": "*",
-    "tslint.json": "*",
-    "nx.json": "*"
+    ".eslintrc.json": "*"
   },
   "tasksRunnerOptions": {
     "default": {
@@ -18,16 +22,28 @@
       }
     }
   },
-  "projects": {
-    "ng-multi-select-lib": {
-      "tags": []
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "generators": {
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
     },
-    "multi-select-demo-app": {
-      "tags": []
+    "@nrwl/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
     },
-    "multi-select-demo-app-e2e": {
-      "tags": [],
-      "implicitDependencies": ["multi-select-demo-app"]
+    "@nrwl/angular:component": {
+      "style": "scss"
     }
-  }
+  },
+  "defaultProject": "multi-select-demo-app"
 }
