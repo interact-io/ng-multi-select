@@ -44,5 +44,4 @@ jobs:
       - name: Build ng-multi-select-lib
         run: yarn build:ng-multi-select-lib
       - name: Build multi-select-demo-app
-        run: yarn build:multi-select-demo-app
-
+        run: yarn build
